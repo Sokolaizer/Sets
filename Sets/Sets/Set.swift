@@ -10,22 +10,20 @@ import Foundation
 struct Set {
     var cardDeck :[Card]
     
-    private var selectedCards : [Card] {
-        return cardsInGame.filter { $0.isSelected }
-    }
+    private var selectedCards : [Card] = []
     
     var cardsInGame:[Card] = []
     
     mutating func chooseCard (at index: Int) {
         if selectedCards.count < 3 {
-        cardsInGame[index].isSelected = !cardsInGame[index].isSelected
+            cardsInGame[index].isSelected = !(cardsInGame[index].isSelected)
             selectedCards.append(cardsInGame[index])
         } else {
             // check selectedCards
             for index in selectedCards.indices {
                 selectedCards[index].isSelected = false
+                selectedCards = []
             }
-            selectedCards = []
             
         }
         
