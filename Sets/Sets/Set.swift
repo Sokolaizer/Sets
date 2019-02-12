@@ -18,7 +18,11 @@ struct Set {
         if selectedCards.count < 3 {
             if cardsInGame[index] != nil {
             cardsInGame[index]!.isSelected = !(cardsInGame[index]!.isSelected)
+                if cardsInGame[index]!.isSelected {
             selectedCards.append(cardsInGame[index]!)
+                } else {
+                    selectedCards = selectedCards.filter{!$0.isSelected}
+                }
             }
         } else if selectedCards.count == 3 {
             if isSet(at: selectedCards) {
@@ -34,14 +38,14 @@ struct Set {
         
     }
     // TODO
-    mutating func addThreeCards(from master : [Card], to slave : [Card?]) {
-        for index in slave.indices {
-            if slave[index] == nil {
-                slave.append(master.removeFirst())
-                
-            }
-        }
-    }
+//    mutating func addThreeCards(from master : [Card], to slave : [Card?]) {
+//        for index in slave.indices {
+//            if slave[index] == nil {
+//                slave.append(master.removeFirst())
+//
+//            }
+//        }
+//    }
     
     func isSet (at cards: [Card]) -> Bool {
         var result = true
