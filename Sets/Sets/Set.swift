@@ -33,9 +33,14 @@ struct Set {
         }
         
     }
-    
-    func giveMoreThreeCards() {
-        for 
+    // TODO
+    mutating func addThreeCards(from master : [Card], in slave : [Card?]) {
+        for index in slave.indices {
+            if slave[index] == nil {
+                slave.append(master.removeFirst())
+                
+            }
+        }
     }
     
     func isSet (at cards: [Card]) -> Bool {
