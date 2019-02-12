@@ -34,7 +34,7 @@ struct Set {
         
     }
     // TODO
-    mutating func addThreeCards(from master : [Card], in slave : [Card?]) {
+    mutating func addThreeCards(from master : [Card], to slave : [Card?]) {
         for index in slave.indices {
             if slave[index] == nil {
                 slave.append(master.removeFirst())
