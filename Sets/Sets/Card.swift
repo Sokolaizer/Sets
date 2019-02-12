@@ -8,36 +8,25 @@
 
 import Foundation
 struct Card: Equatable {
-    enum Color: CaseIterable {
-        case red
-        case green
-        case violet
+    enum Options:Int, CaseIterable {
+        case v1 = 1
+        case v2 = 2
+        case v3 = 3
     }
+ 
+    let color: Options
+    let shape: Options
+    let visualization: Options
+    let rank: Options
     
-    enum Shape: CaseIterable {
-        case oval
-        case wave
-        case diamond
+    var value: [Int] {
+    return [color.rawValue, shape.rawValue, visualization.rawValue, rank.rawValue]
     }
-    enum Visualization: CaseIterable {
-        case fil
-        case hatch
-        case outline
-    }
-    enum Rank: CaseIterable {
-        case single
-        case double
-        case triple
-    }
-    var color: Color
-    var shape: Shape
-    var visualization: Visualization
-    var rank: Rank
     
     var isRemoved = false
     var isSelected = false
 
-    init(color: Color, shape: Shape, visualization: Visualization, rank: Rank) {
+    init(color: Options, shape: Options, visualization: Options, rank: Options) {
         self.color = color
         self.shape = shape
         self.visualization = visualization

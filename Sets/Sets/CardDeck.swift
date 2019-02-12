@@ -10,10 +10,10 @@
 struct CardDeck {
     static func create() -> [Card]{
         var cardDeck : [Card] = []
-        for color in  Card.Color.allCases {
-            for shape in Card.Shape.allCases {
-                for rank in Card.Rank.allCases {
-                    for visualization in Card.Visualization.allCases {
+        for color in  Card.Options.allCases {
+            for shape in Card.Options.allCases {
+                for rank in Card.Options.allCases {
+                    for visualization in Card.Options.allCases {
                         cardDeck.append(Card(color: color,
                                              shape: shape,
                                              visualization: visualization,

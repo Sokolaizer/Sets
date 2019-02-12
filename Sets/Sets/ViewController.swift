@@ -12,13 +12,12 @@ class ViewController: UIViewController {
 
     private lazy var game = Set()
     
-    // EBAT
-    
-    func updateViewFromModel () {
+    func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
-            if let card = game.cardsInGame[index] {
-                if card.isSelected {
+            let card = game.cardsInGame[index]
+            if card != nil {
+                if card!.isSelected {
                     button.layer.borderWidth = 3.0
                     button.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 0.8705586473)
                 } else {
@@ -45,6 +44,7 @@ class ViewController: UIViewController {
             for index in cardButtons.indices {
                     cardButtons[index].layer.cornerRadius = 8.0
                 }
+            updateViewFromModel()
         }
     }
 
