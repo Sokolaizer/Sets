@@ -24,16 +24,17 @@ struct Set {
                     selectedCards = selectedCards.filter{!$0.isSelected}
                 }
             }
-        } else if selectedCards.count == 3 {
+        } else {
             if isSet(at: selectedCards) {
-            
-            
-            for index in selectedCards.indices {
-                selectedCards[index].isSelected = false
+                // do something
+            }
+            for index in cardsInGame.indices {
+                if cardsInGame[index] != nil {
+                cardsInGame[index]!.isSelected = false
                 }
             }
-                selectedCards.removeAll()
             
+            selectedCards.removeAll()
         }
         
     }

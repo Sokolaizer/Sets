@@ -30,6 +30,26 @@ class ViewController: UIViewController {
         }
     }
     
+    func drawCard(_ card: Card) ->NSAttributedString {
+        var cardVIew: NSAttributedString
+        let character: String
+        switch card.shape {
+        case .v1:
+            character = "▲"
+        case .v2:
+           character =  "■"
+        case .v3:
+           character =  "●"
+        }
+        switch card.rank {
+        case .v1:
+            character = 
+        default:
+            <#code#>
+        }
+
+    }
+    
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
