@@ -32,7 +32,7 @@ struct Set {
                 selectedCards[index].isSelected = false
                 }
             }
-                selectedCards = []
+                selectedCards.removeAll()
             
         }
         
@@ -49,11 +49,11 @@ struct Set {
     
     func isSet (at cards: [Card]) -> Bool {
         var result = true
-            for i in 0...3 {
+            for i in cards[0].value.indices {
                 if result {
                 result = cards[0].value[i] != cards[1].value[i] &&
                     cards[1].value[i] != cards[2].value[i] &&
-                    cards[0].value[i] != cards[3].value[i]
+                    cards[0].value[i] != cards[2].value[i]
                 }
             }
         if cards[0].value == cards[1].value &&
