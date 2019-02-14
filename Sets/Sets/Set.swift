@@ -14,6 +14,8 @@ struct Set {
     
     var cardsInGame: [Card?] = []
     
+    var score = 0
+    
     mutating func chooseCard (at index: Int) {
         if selectedCards.count < 3 {
             if cardsInGame[index] != nil {
@@ -25,28 +27,37 @@ struct Set {
                 }
             }
         } else {
-            if isSet(at: selectedCards) {
-                // do something
+            if isSet(at: selectedCards)  {
+                score += 1
+                 for index in cardsInGame.indices{
+                    if cardsInGame[index] != nil {
+                        if cardsInGame[index]!.isSelected {
+                            cardsInGame[index] = nil
+                        }
+                    }
+                }
+                addThreeCards()
             }
             for index in cardsInGame.indices {
                 if cardsInGame[index] != nil {
-                cardsInGame[index]!.isSelected = false
+                    cardsInGame[index]!.isSelected = false
                 }
             }
-            
             selectedCards.removeAll()
         }
-        
     }
-    // TODO
-//    mutating func addThreeCards(from master : [Card], to slave : [Card?]) {
-//        for index in slave.indices {
-//            if slave[index] == nil {
-//                slave.append(master.removeFirst())
-//
-//            }
-//        }
-//    }
+
+    mutating func addThreeCards() {
+        if !cardDeck.isEmpty {
+            var counter = 3
+            for  index in cardsInGame.indices {
+                if counter > 0 && cardsInGame[index] == nil {
+                    cardsInGame.insert(cardDeck.removeFirst(), at: index)
+                    counter -= 1
+                }
+            }
+        }
+    }
     
     func isSet (at cards: [Card]) -> Bool {
         var result = true
@@ -61,7 +72,7 @@ struct Set {
             cards[0].value == cards[2].value {
             result = true
         }
-        return result
+        return true
     }
 
         
